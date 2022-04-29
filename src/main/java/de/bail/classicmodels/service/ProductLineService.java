@@ -1,14 +1,12 @@
 package de.bail.classicmodels.service;
 
 import de.bail.classicmodels.model.enities.ProductLine;
-import org.eclipse.microprofile.opentracing.Traced;
 
 import javax.enterprise.context.ApplicationScoped;
 
 /**
  * ProductLine Service
  */
-@Traced
 @ApplicationScoped
 public class ProductLineService extends CrudService<ProductLine, String> {
 

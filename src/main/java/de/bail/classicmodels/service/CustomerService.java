@@ -49,7 +49,7 @@ public class CustomerService extends CrudService<Customer, Integer> {
      * @return List of customer with matching names
      */
     public List<Customer> search(String term) {
-        if (term != null && !term.isEmpty() && !term.isBlank()) {
+        if (term != null && !term.isBlank()) {
             List<Customer> customers = new ArrayList<>();
             String[] keywords = term.toLowerCase().split(" ");
             for (Customer customer : getAllEntities()) {

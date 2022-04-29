@@ -1,7 +1,6 @@
 package de.bail.classicmodels.service;
 
 import de.bail.classicmodels.model.enities.Payment;
-import org.eclipse.microprofile.opentracing.Traced;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -11,7 +10,6 @@ import java.util.List;
 /**
  * Payment Service
  */
-@Traced
 @ApplicationScoped
 public class PaymentService extends CrudService<Payment, Payment.PaymentId> {
 

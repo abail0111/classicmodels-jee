@@ -49,7 +49,7 @@ public class EmployeeService extends CrudService<Employee, Integer> {
      * @return List of employee with matching names
      */
     public List<Employee> search(String term) {
-        if (term != null && !term.isEmpty() && !term.isBlank()) {
+        if (term != null && !term.isBlank()) {
             List<Employee> employees = new ArrayList<>();
             String[] keywords = term.toLowerCase().split(" ");
             for (Employee employee : getAllEntities()) {
