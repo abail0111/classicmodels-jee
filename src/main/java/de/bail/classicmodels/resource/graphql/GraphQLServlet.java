@@ -2,6 +2,7 @@ package de.bail.classicmodels.resource.graphql;
 
 import de.bail.classicmodels.model.enities.Customer;
 import de.bail.classicmodels.resource.graphql.datafetcher.CustomerDataFetcher;
+import de.bail.classicmodels.service.CustomerService;
 import graphql.TypeResolutionEnvironment;
 import graphql.kickstart.servlet.GraphQLConfiguration;
 import graphql.kickstart.servlet.GraphQLHttpServlet;
@@ -13,6 +14,7 @@ import graphql.schema.idl.SchemaGenerator;
 import graphql.schema.idl.SchemaParser;
 import graphql.schema.idl.TypeDefinitionRegistry;
 
+import javax.inject.Inject;
 import javax.servlet.annotation.WebServlet;
 import java.io.File;
 import java.util.Objects;
@@ -20,12 +22,15 @@ import java.util.Objects;
 @WebServlet(name = "GraphQLServlet", urlPatterns = {"graphql/*"}, loadOnStartup = 1)
 public class GraphQLServlet extends GraphQLHttpServlet {
 
+    @Inject
+    private CustomerService customerService;
+
     @Override
     protected GraphQLConfiguration getConfiguration() {
         return GraphQLConfiguration.with(createSchema()).build();
     }
 
-    private static GraphQLSchema createSchema() {
+    private GraphQLSchema createSchema() {
         SchemaParser schemaParser = new SchemaParser();
         SchemaGenerator schemaGenerator = new SchemaGenerator();
         File schemaFile = new File(Objects.requireNonNull(GraphQLServlet.class.getClassLoader().getResource("schema.graphqls")).getFile());
@@ -34,12 +39,12 @@ public class GraphQLServlet extends GraphQLHttpServlet {
         return schemaGenerator.makeExecutableSchema(typeRegistry, wiring);
     }
 
-    private static RuntimeWiring buildRuntimeWiring() {
+    private RuntimeWiring buildRuntimeWiring() {
         return RuntimeWiring.newRuntimeWiring()
                 //.scalar(CustomScalar)
                 // this uses builder function lambda syntax
                 .type("Query", typeWiring -> typeWiring
-                          .dataFetcher("customer", new CustomerDataFetcher())
+                          .dataFetcher("customer", new CustomerDataFetcher(customerService))
 //                        .dataFetcher("human", StarWarsData.getHumanDataFetcher())
 //                        .dataFetcher("droid", StarWarsData.getDroidDataFetcher())
                 )

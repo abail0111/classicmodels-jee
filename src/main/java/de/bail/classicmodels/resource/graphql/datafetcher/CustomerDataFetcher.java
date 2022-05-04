@@ -1,20 +1,25 @@
 package de.bail.classicmodels.resource.graphql.datafetcher;
 
 import de.bail.classicmodels.model.enities.Customer;
+import de.bail.classicmodels.service.CustomerService;
 import graphql.schema.DataFetcher;
 import graphql.schema.DataFetchingEnvironment;
 
+/**
+ * Customer Data Fetcher
+ */
 public class CustomerDataFetcher implements DataFetcher<Customer> {
+
+    private final CustomerService service;
+
+    public CustomerDataFetcher(CustomerService service) {
+        this.service = service;
+    }
 
     @Override
     public Customer get(DataFetchingEnvironment dataFetchingEnvironment) throws Exception {
-        Customer customer = new Customer();
-        customer.setCustomerName("Test");
-        customer.setFirstName("ASda");
-        customer.setLastName("Basdas");
-
-        return customer;
+        int id = dataFetchingEnvironment.getArgument("id");
+        return service.getEntityById(id);
     }
-
 
 }
