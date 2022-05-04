@@ -1,8 +1,8 @@
 package de.bail.classicmodels.resource.graphql;
 
 import de.bail.classicmodels.model.enities.Customer;
-import de.bail.classicmodels.resource.graphql.datafetcher.CustomerDataFetcher;
-import de.bail.classicmodels.service.CustomerService;
+import de.bail.classicmodels.resource.graphql.datafetcher.*;
+import de.bail.classicmodels.service.*;
 import graphql.TypeResolutionEnvironment;
 import graphql.kickstart.servlet.GraphQLConfiguration;
 import graphql.kickstart.servlet.GraphQLHttpServlet;
@@ -25,6 +25,24 @@ public class GraphQLServlet extends GraphQLHttpServlet {
     @Inject
     private CustomerService customerService;
 
+    @Inject
+    private EmployeeService employeeService;
+
+    @Inject
+    private OfficeService officeService;
+
+    @Inject
+    private OrderService orderService;
+
+    @Inject
+    private PaymentService paymentService;
+
+    @Inject
+    private ProductService productService;
+
+    @Inject
+    private ProductLineService productLineService;
+
     @Override
     protected GraphQLConfiguration getConfiguration() {
         return GraphQLConfiguration.with(createSchema()).build();
@@ -45,8 +63,20 @@ public class GraphQLServlet extends GraphQLHttpServlet {
                 // this uses builder function lambda syntax
                 .type("Query", typeWiring -> typeWiring
                           .dataFetcher("customer", new CustomerDataFetcher(customerService))
-//                        .dataFetcher("human", StarWarsData.getHumanDataFetcher())
-//                        .dataFetcher("droid", StarWarsData.getDroidDataFetcher())
+                          .dataFetcher("customers", new CustomersDataFetcher(customerService))
+                          .dataFetcher("employee", new EmployeeDataFetcher(employeeService))
+                          .dataFetcher("employees", new EmployeesDataFetcher(employeeService))
+                          .dataFetcher("office", new OfficeDataFetcher(officeService))
+                          .dataFetcher("offices", new OfficesDataFetcher(officeService))
+                          .dataFetcher("order", new OrderDataFetcher(orderService))
+                          .dataFetcher("orders", new OrdersDataFetcher(orderService))
+                          .dataFetcher("payment", new PaymentDataFetcher(paymentService))
+                          .dataFetcher("payments", new PaymentsDataFetcher(paymentService))
+                          .dataFetcher("product", new ProductDataFetcher(productService))
+                          .dataFetcher("products", new ProductDataFetcher(productService))
+                          .dataFetcher("productLine", new ProductLineDataFetcher(productLineService))
+                          .dataFetcher("productLines", new ProductLinesDataFetcher(productLineService))
+                          .dataFetcher("searchContact", new SearchContactsDataFetcher(customerService, employeeService))
                 )
                 .type("Contact", typeWiring -> typeWiring
                         .typeResolver(new TypeResolver() {
