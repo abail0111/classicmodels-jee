@@ -23,7 +23,10 @@ public class ProductsDataFetcher implements DataFetcher<List<Product>> {
         int limit = dataFetchingEnvironment.getArgument("limit");
         int offset = dataFetchingEnvironment.getArgument("offset");
         String productLine = dataFetchingEnvironment.getArgument("productLine");
-        return service.filterByProductLine(productLine, offset, limit);
+        if (productLine != null) {
+            return service.filterByProductLine(productLine, offset, limit);
+        }
+        return service.getAllEntitiesPagination(offset, limit);
     }
 
 }

@@ -107,6 +107,7 @@ public abstract class CrudService<T extends GenericEntity, ID> {
    * @param id Entity id
    * @return Entity
    */
+  @Transactional
   public T getEntityById(ID id) {
     T entity = em.find(type, id);
     if (entity != null) {

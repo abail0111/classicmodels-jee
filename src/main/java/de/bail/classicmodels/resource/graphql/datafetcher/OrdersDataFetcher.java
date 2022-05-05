@@ -23,7 +23,10 @@ public class OrdersDataFetcher implements DataFetcher<List<Order>> {
         int limit = dataFetchingEnvironment.getArgument("limit");
         int offset = dataFetchingEnvironment.getArgument("offset");
         String status = dataFetchingEnvironment.getArgument("status");
-        return service.filterByStatus(status, offset, limit);
+        if (status != null) {
+            return service.filterByStatus(status, offset, limit);
+        }
+        return service.getAllEntitiesPagination(offset, limit);
     }
 
 }

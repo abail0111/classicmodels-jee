@@ -46,7 +46,7 @@ public class Customer implements Contact, GenericEntity,  Serializable {
 
   private String country;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "salesRepEmployeeNumber")
   private Employee salesRepEmployee;
 
