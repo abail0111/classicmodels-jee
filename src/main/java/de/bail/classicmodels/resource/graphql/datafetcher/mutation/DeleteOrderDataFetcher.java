@@ -1,4 +1,4 @@
-package de.bail.classicmodels.resource.graphql.datafetcher;
+package de.bail.classicmodels.resource.graphql.datafetcher.mutation;
 
 import de.bail.classicmodels.model.enities.Order;
 import de.bail.classicmodels.service.OrderService;
@@ -6,20 +6,20 @@ import graphql.schema.DataFetcher;
 import graphql.schema.DataFetchingEnvironment;
 
 /**
- * Order Data Fetcher
+ * Delete Order Data Fetcher
  */
-public class OrderDataFetcher implements DataFetcher<Order> {
+public class DeleteOrderDataFetcher implements DataFetcher<Order> {
 
     private final OrderService service;
 
-    public OrderDataFetcher(OrderService service) {
+    public DeleteOrderDataFetcher(OrderService service) {
         this.service = service;
     }
 
     @Override
     public Order get(DataFetchingEnvironment dataFetchingEnvironment) throws Exception {
         int id = dataFetchingEnvironment.getArgument("id");
-        return service.getEntityById(id);
+        return service.deleteById(id);
     }
 
 }

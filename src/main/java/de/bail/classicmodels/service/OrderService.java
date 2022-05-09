@@ -5,6 +5,7 @@ import de.bail.classicmodels.model.enities.Order;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -31,6 +32,7 @@ public class OrderService extends CrudService<Order, Integer> {
      * @return persisted order object
      */
     @Override
+    @Transactional
     public Order create(Order order) {
         if (order != null && order.getCustomer() != null && order.getCustomer().getId() != null) {
             if (!customerService.hasEntity(order.getCustomer().getId())) {

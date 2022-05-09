@@ -155,11 +155,12 @@ public abstract class CrudService<T extends GenericEntity, ID> {
    * @param id Id of the entity to be deleted
    */
   @Transactional
-  public void deleteById(ID id) {
+  public T deleteById(ID id) {
     T entity = em.find(type, id);
     if (em.find(type, id) != null) {
       em.remove(entity);
       em.flush();
+      return entity;
     } else {
       throw notFoundException(id);
     }

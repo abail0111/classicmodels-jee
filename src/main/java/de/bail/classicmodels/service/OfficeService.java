@@ -3,6 +3,7 @@ package de.bail.classicmodels.service;
 import de.bail.classicmodels.model.enities.Office;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.transaction.Transactional;
 
 /**
  * Office Service
@@ -24,6 +25,7 @@ public class OfficeService extends CrudService<Office, Integer> {
      * @return persisted office object
      */
     @Override
+    @Transactional
     public Office create(Office office) {
         if (office != null) {
             save(office);

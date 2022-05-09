@@ -5,6 +5,7 @@ import de.bail.classicmodels.model.enities.Employee;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -33,6 +34,7 @@ public class EmployeeService extends CrudService<Employee, Integer> {
      * @return persisted employee object
      */
     @Override
+    @Transactional
     public Employee create(Employee employee) {
         if (employee != null && employee.getOffice() != null) {
             if (!officeService.hasEntity(employee.getOffice().getId())) {

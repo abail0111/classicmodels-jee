@@ -5,6 +5,7 @@ import de.bail.classicmodels.model.enities.Payment;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -30,6 +31,7 @@ public class PaymentService extends CrudService<Payment, Payment.PaymentId> {
      * @return persisted payment object
      */
     @Override
+    @Transactional
     public Payment create(Payment payment) {
         if (payment != null && payment.getId() != null && payment.getId().getCheckNumber() != null && payment.getId().getCustomerNumber() != null) {
             if (!customerService.hasEntity(payment.getId().getCustomerNumber())) {

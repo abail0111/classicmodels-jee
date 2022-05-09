@@ -1,11 +1,9 @@
 package de.bail.classicmodels.resource.graphql;
 
 import de.bail.classicmodels.model.enities.*;
-import de.bail.classicmodels.resource.graphql.datafetcher.*;
+import de.bail.classicmodels.resource.graphql.datafetcher.mutation.*;
+import de.bail.classicmodels.resource.graphql.datafetcher.query.*;
 import de.bail.classicmodels.service.*;
-import graphql.TypeResolutionEnvironment;
-import graphql.kickstart.execution.GraphQLInvoker;
-import graphql.kickstart.execution.GraphQLQueryInvoker;
 import graphql.kickstart.servlet.GraphQLConfiguration;
 import graphql.kickstart.servlet.GraphQLHttpServlet;
 import graphql.schema.*;
@@ -105,6 +103,37 @@ public class GraphQLServlet extends GraphQLHttpServlet {
                           .dataFetcher("productLine", new ProductLineDataFetcher(productLineService))
                           .dataFetcher("productLines", new ProductLinesDataFetcher(productLineService))
                           .dataFetcher("searchContact", new SearchContactsDataFetcher(customerService, employeeService))
+                )
+                // Mutation Data Fetcher
+                .type("Mutation", typeWiring -> typeWiring
+                        // create
+                        .dataFetcher("createCustomer", new CreateCustomerDataFetcher(customerService))
+                        .dataFetcher("createEmployee", new CreateEmployeeDataFetcher(employeeService))
+                        .dataFetcher("createOffice", new CreateOfficeDataFetcher(officeService))
+                        .dataFetcher("createOrder", new CreateOrderDataFetcher(orderService))
+                        .dataFetcher("createOrderDetail", new CreateOrderDetailsDataFetcher(orderDetailService))
+                        .dataFetcher("createPayment", new CreatePaymentDataFetcher(paymentService))
+                        .dataFetcher("createProduct", new CreateProductDataFetcher(productService))
+                        .dataFetcher("createProductLine", new CreateProductLineDataFetcher(productLineService))
+                        // update
+                        .dataFetcher("updateCustomer", new UpdateCustomerDataFetcher(customerService))
+                        .dataFetcher("updateEmployee", new UpdateEmployeeDataFetcher(employeeService))
+                        .dataFetcher("updateOffice", new UpdateOfficeDataFetcher(officeService))
+                        .dataFetcher("updateOrder", new UpdateOrderDataFetcher(orderService))
+                        .dataFetcher("updateOrderDetail", new UpdateOrderDetailsDataFetcher(orderDetailService))
+                        .dataFetcher("updatePayment", new UpdatePaymentDataFetcher(paymentService))
+                        .dataFetcher("updateProduct", new UpdateProductDataFetcher(productService))
+                        .dataFetcher("updateProductLine", new UpdateProductLineDataFetcher(productLineService))
+                        // delete
+                        .dataFetcher("deleteCustomer", new DeleteCustomerDataFetcher(customerService))
+                        .dataFetcher("deleteEmployee", new DeleteEmployeeDataFetcher(employeeService))
+                        .dataFetcher("deleteOffice", new DeleteOfficeDataFetcher(officeService))
+                        .dataFetcher("deleteOrder", new DeleteOrderDataFetcher(orderService))
+                        .dataFetcher("deleteOrderDetail", new DeleteOrderDetailDataFetcher(orderDetailService))
+                        .dataFetcher("deletePayment", new DeletePaymentDataFetcher(paymentService))
+                        .dataFetcher("deleteProduct", new DeleteProductDataFetcher(productService))
+                        .dataFetcher("deleteProductLine", new DeleteProductLineDataFetcher(productLineService))
+
                 )
                 // Contact Interface Type Resolver
                 .type("Contact", typeWiring -> typeWiring

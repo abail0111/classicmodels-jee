@@ -1,4 +1,4 @@
-package de.bail.classicmodels.resource.graphql.datafetcher;
+package de.bail.classicmodels.resource.graphql.datafetcher.query;
 
 import de.bail.classicmodels.model.enities.Order;
 import de.bail.classicmodels.service.OrderService;

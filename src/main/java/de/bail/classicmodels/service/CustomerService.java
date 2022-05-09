@@ -5,6 +5,7 @@ import de.bail.classicmodels.model.enities.Customer;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -33,6 +34,7 @@ public class CustomerService extends CrudService<Customer, Integer> {
      * @return persisted customer object
      */
     @Override
+    @Transactional
     public Customer create(Customer customer) {
         if (customer != null && customer.getSalesRepEmployee() != null && customer.getSalesRepEmployee().getId() != null) {
             if (!employeeService.hasEntity(customer.getSalesRepEmployee().getId())) {

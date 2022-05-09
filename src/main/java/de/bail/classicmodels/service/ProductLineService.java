@@ -3,6 +3,7 @@ package de.bail.classicmodels.service;
 import de.bail.classicmodels.model.enities.ProductLine;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.transaction.Transactional;
 
 /**
  * ProductLine Service
@@ -24,6 +25,7 @@ public class ProductLineService extends CrudService<ProductLine, String> {
      * @return persisted payment object
      */
     @Override
+    @Transactional
     public ProductLine create(ProductLine productLine) {
         if (productLine != null) {
             save(productLine);

@@ -5,6 +5,7 @@ import de.bail.classicmodels.model.enities.OrderDetail;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -34,6 +35,7 @@ public class OrderDetailService extends CrudService<OrderDetail, OrderDetail.Ord
      * @return persisted orderDetail object
      */
     @Override
+    @Transactional
     public OrderDetail create(OrderDetail orderDetail) {
         if (orderDetail != null && orderDetail.getOrder() != null && orderDetail.getProduct() != null && orderDetail.getProduct().getId() != null) {
             if (!orderService.hasEntity(orderDetail.getOrder())) {

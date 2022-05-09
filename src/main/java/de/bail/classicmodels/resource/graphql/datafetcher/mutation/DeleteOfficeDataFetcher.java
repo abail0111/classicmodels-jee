@@ -1,4 +1,4 @@
-package de.bail.classicmodels.resource.graphql.datafetcher;
+package de.bail.classicmodels.resource.graphql.datafetcher.mutation;
 
 import de.bail.classicmodels.model.enities.Office;
 import de.bail.classicmodels.service.OfficeService;
@@ -6,20 +6,20 @@ import graphql.schema.DataFetcher;
 import graphql.schema.DataFetchingEnvironment;
 
 /**
- * Office Data Fetcher
+ * Delete Office Data Fetcher
  */
-public class OfficeDataFetcher implements DataFetcher<Office> {
+public class DeleteOfficeDataFetcher implements DataFetcher<Office> {
 
     private final OfficeService service;
 
-    public OfficeDataFetcher(OfficeService service) {
+    public DeleteOfficeDataFetcher(OfficeService service) {
         this.service = service;
     }
 
     @Override
     public Office get(DataFetchingEnvironment dataFetchingEnvironment) throws Exception {
         int id = dataFetchingEnvironment.getArgument("id");
-        return service.getEntityById(id);
+        return service.deleteById(id);
     }
 
 }

@@ -5,6 +5,7 @@ import de.bail.classicmodels.model.enities.Product;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -31,6 +32,7 @@ public class ProductService extends CrudService<Product, String> {
      * @return persisted product object
      */
     @Override
+    @Transactional
     public Product create(Product product) {
         if (product != null && product.getProductLine() != null) {
             if (!productLineService.hasEntity(product.getProductLine().getId())) {
