@@ -1,8 +1,7 @@
 package de.bail.classicmodels.service;
 
 import de.bail.classicmodels.model.enities.GenericEntity;
-import de.bail.classicmodels.util.CustomInternalServerErrorException;
-import de.bail.classicmodels.util.CustomNotFoundException;
+import de.bail.classicmodels.util.CustomGraphQLException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
@@ -42,18 +41,18 @@ public abstract class CrudService<T extends GenericEntity, ID> {
   /**
    * Returns custom not found exception with graphql error code
    * @param id The id of requested entity
-   * @return New custom NotFoundException
+   * @return New CustomGraphQLException
    */
-  public CustomNotFoundException notFoundException(ID id) {
-    return new CustomNotFoundException(String.format("%s with ID '%s' could not be found.", type.getSimpleName(), id));
+  public CustomGraphQLException notFoundException(ID id) {
+    return new CustomGraphQLException(404, String.format("%s with ID '%s' could not be found.", type.getSimpleName(), id));
   }
 
   /**
    * Returns custom internal server error exception with graphql error code
    * @return new custom InternalServerErrorException
    */
-  public CustomInternalServerErrorException internalServerErrorException() {
-    return new CustomInternalServerErrorException("Something went wrong while processing your request.");
+  public CustomGraphQLException internalServerErrorException() {
+    return new CustomGraphQLException(500, "Something went wrong while processing your request.");
   }
 
   /**
