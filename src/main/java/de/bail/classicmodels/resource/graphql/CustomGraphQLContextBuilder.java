@@ -22,6 +22,7 @@ public class CustomGraphQLContextBuilder implements GraphQLServletContextBuilder
 
     @Override
     public GraphQLContext build(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
+        httpServletResponse.setContentType("application/json");
         return DefaultGraphQLServletContext.createServletContext(dataLoaderRegistry, null)
                 .with(httpServletRequest)
                 .with(httpServletResponse)
