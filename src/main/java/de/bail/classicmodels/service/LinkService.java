@@ -10,13 +10,15 @@ import javax.ws.rs.core.UriBuilder;
 @ApplicationScoped
 public class LinkService {
 
-    protected String host;
+    protected String host = "localhost";
 
-    protected String port;
+    protected String basePath = "classicmodels/api";
 
-    protected boolean sslEnabled;
+    protected String port = "8080";
 
-    protected boolean relativeLinks;
+    protected boolean sslEnabled = false;
+
+    protected boolean relativeLinks = false;
 
     /**
      * Build new link
@@ -60,7 +62,11 @@ public class LinkService {
         } else {
             http = "http://";
         }
-        return UriBuilder.fromUri(http + host + ":" + port + "/").build().toString();
+        UriBuilder uriBuilder = UriBuilder.fromUri(http + host + ":" + port + "/");
+        if (basePath != null) {
+            uriBuilder.path(basePath);
+        }
+        return uriBuilder.build().toString();
     }
 
     /**
