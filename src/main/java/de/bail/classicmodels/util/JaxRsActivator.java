@@ -1,13 +1,11 @@
 package de.bail.classicmodels.util;
 
-//import io.swagger.jaxrs.config.BeanConfig;
-
 import javax.servlet.ServletConfig;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 import javax.ws.rs.core.Context;
 
-@ApplicationPath("")
+@ApplicationPath("api")
 public class JaxRsActivator extends Application {
 
 //    public JaxRsActivator(@Context ServletConfig servletConfig) {

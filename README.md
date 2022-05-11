@@ -3,7 +3,7 @@
 The Classic Models API project is a Jakarta EE implementation of the
 [BIRT](https://eclipse.github.io/birt-website/docs/template-sample-database/) /
 [MySQL](https://www.mysqltutorial.org/mysql-sample-database.aspx)
-sample database as RESTful and GraphQL web service.
+sample database as RESTful- and GraphQL web service.
 
 
 ## Setup Database
@@ -13,23 +13,6 @@ This project uses a slightly modified version of the
 [MySQL](https://www.mysqltutorial.org/mysql-sample-database.aspx)
 sample database 'ClassicModels'. To create the 'classicmodels' database use the
 MySQL scripts from the /misc/mysql directory.
-
-### MySQL
-
-```shell script
-# Start the mysql utility
-mysql --local-infile=1 -u root -p
-
-# Enabling LOAD DATA LOCAL INFILE in mysql
-SET GLOBAL local_infile=1;
-
-# Create the ClassicModels database and load the schema and content
-create database classicmodels;
-use classicmodels;
-source create_classicmodels-auto_increment.sql;
-source load_classicmodels.sql;
-quit;
-```
 
 ### PostgreSQL
 
@@ -50,4 +33,41 @@ CREATE DATABASE classicmodels WITH ENCODING 'UTF8' LC_COLLATE='German_Germany.12
 
 # Option 2: Use the database dump
 \i {project}/misc/postgres/classicmodels_dump.sql
+```
+
+### MySQL
+
+```shell script
+# Start the mysql utility
+mysql --local-infile=1 -u root -p
+
+# Enabling LOAD DATA LOCAL INFILE in mysql
+SET GLOBAL local_infile=1;
+
+# Create the ClassicModels database and load the schema and content
+create database classicmodels;
+use classicmodels;
+source create_classicmodels-auto_increment.sql;
+source load_classicmodels.sql;
+quit;
+```
+
+## Testing
+
+
+
+### Generate GraphQL Operations
+
+Use [gql-generator](https://github.com/timqian/gql-generator)
+to generate queries and mutations from GraphQL Schema.
+Copy the Schema file from
+[/src/main/resources/schema.graphqls](/src/main/resources/schema.graphqls)
+into the test resource directory (src\test\resources\graphql) and run the generator.
+
+```shell script
+# Install
+npm install gql-generator -g
+
+# Generate queries and mutations from schema file
+gqlg --schemaFilePath ./schema.graphql --destDirPath ./operations --depthLimit 2
 ```

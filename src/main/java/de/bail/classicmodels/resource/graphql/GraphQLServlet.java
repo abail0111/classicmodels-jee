@@ -3,7 +3,9 @@ package de.bail.classicmodels.resource.graphql;
 import de.bail.classicmodels.model.enities.*;
 import de.bail.classicmodels.resource.graphql.datafetcher.mutation.*;
 import de.bail.classicmodels.resource.graphql.datafetcher.query.*;
+import de.bail.classicmodels.resource.graphql.scalar.LocalDataTimeScalar;
 import de.bail.classicmodels.service.*;
+import graphql.Scalars;
 import graphql.kickstart.servlet.GraphQLConfiguration;
 import graphql.kickstart.servlet.GraphQLHttpServlet;
 import graphql.schema.*;
@@ -19,6 +21,7 @@ import org.dataloader.DataLoaderRegistry;
 import javax.inject.Inject;
 import javax.servlet.annotation.WebServlet;
 import java.io.File;
+import java.time.LocalDateTime;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
@@ -86,6 +89,8 @@ public class GraphQLServlet extends GraphQLHttpServlet {
      */
     private RuntimeWiring buildRuntimeWiring() {
         return RuntimeWiring.newRuntimeWiring()
+                // custom scalar
+                .scalar(LocalDataTimeScalar.SCALAR_TYPE)
                 // Query Data Fetcher
                 .type("Query", typeWiring -> typeWiring
                           .dataFetcher("customer", new CustomerDataFetcher(customerService))
@@ -99,7 +104,7 @@ public class GraphQLServlet extends GraphQLHttpServlet {
                           .dataFetcher("payment", new PaymentDataFetcher(paymentService))
                           .dataFetcher("payments", new PaymentsDataFetcher(paymentService))
                           .dataFetcher("product", new ProductDataFetcher(productService))
-                          .dataFetcher("products", new ProductDataFetcher(productService))
+                          .dataFetcher("products", new ProductsDataFetcher(productService))
                           .dataFetcher("productLine", new ProductLineDataFetcher(productLineService))
                           .dataFetcher("productLines", new ProductLinesDataFetcher(productLineService))
                           .dataFetcher("searchContact", new SearchContactsDataFetcher(customerService, employeeService))

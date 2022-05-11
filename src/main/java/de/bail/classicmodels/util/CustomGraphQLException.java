@@ -24,7 +24,7 @@ public class CustomGraphQLException extends RuntimeException implements GraphQLE
     @Override
     public Map<String, Object> getExtensions() {
         Map<String, Object> customAttributes = new LinkedHashMap<>();
-        customAttributes.put("errorCode", this.errorCode);
+        customAttributes.put("code", this.errorCode);
         customAttributes.put("errorMessage", this.getMessage());
         return customAttributes;
     }
