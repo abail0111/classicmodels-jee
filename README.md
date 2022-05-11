@@ -12,7 +12,7 @@ This project uses a slightly modified version of the
 [BIRT](https://eclipse.github.io/birt-website/docs/template-sample-database/) /
 [MySQL](https://www.mysqltutorial.org/mysql-sample-database.aspx)
 sample database 'ClassicModels'. To create the 'classicmodels' database use the
-MySQL scripts from the /misc/mysql directory.
+PostgreSQL or MySQL scripts from the /misc directory.
 
 ### PostgreSQL
 
@@ -52,9 +52,19 @@ source load_classicmodels.sql;
 quit;
 ```
 
+## Getting Started
+The Application was tested with
+`Wildfly 26.1.0.Final` and `Java 11`.<br/>
+Package the application using maven:
+
+```
+mvn clean package
+```
+
 ## Testing
 
-
+The application contains GraphQL test cases based on generated graphql operations. 
+In case of significant changes in the schema, the operations and tests must be updated.
 
 ### Generate GraphQL Operations
 
