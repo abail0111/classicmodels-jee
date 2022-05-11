@@ -17,7 +17,6 @@ public class CustomGraphQLException extends RuntimeException implements GraphQLE
 
     public CustomGraphQLException(int errorCode, String message) {
         super(message);
-
         this.errorCode = errorCode;
     }
 
@@ -37,5 +36,9 @@ public class CustomGraphQLException extends RuntimeException implements GraphQLE
     @Override
     public ErrorType getErrorType() {
         return null;
+    }
+
+    public int getErrorCode() {
+        return errorCode;
     }
 }
