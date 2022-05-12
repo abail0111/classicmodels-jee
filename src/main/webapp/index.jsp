@@ -11,7 +11,7 @@
 <h2>GraphQL</h2>
 <span>POST http://localhost:8080/classicmodels/graphql</span><br/>
 <br/>
-<a href="/classicmodels/graphiql">GraphiQL</a>
+<span> Create new queries with <a href="/classicmodels/graphiql">GraphiQL</a></span>
 <br/>
 <br/>
 

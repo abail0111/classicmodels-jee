@@ -12,7 +12,9 @@ This project uses a slightly modified version of the
 [BIRT](https://eclipse.github.io/birt-website/docs/template-sample-database/) /
 [MySQL](https://www.mysqltutorial.org/mysql-sample-database.aspx)
 sample database 'ClassicModels'. To create the 'classicmodels' database use the
-PostgreSQL or MySQL scripts from the /misc directory.
+PostgreSQL or MySQL scripts from the `/misc/` directory.
+Please update the `persistence.xml` file according to the selected database.
+
 
 ### PostgreSQL
 
@@ -63,8 +65,8 @@ mvn clean package
 
 ## Testing
 
-The application contains GraphQL test cases based on generated graphql operations. 
-In case of significant changes in the schema, the operations and tests must be updated.
+The application contains GraphQL test cases based on generated GraphQL-Operations.
+In case of significant changes of the schema, the operations and tests must be updated.
 
 ### Generate GraphQL Operations
 
@@ -72,7 +74,7 @@ Use [gql-generator](https://github.com/timqian/gql-generator)
 to generate queries and mutations from GraphQL Schema.
 Copy the Schema file from
 [/src/main/resources/schema.graphqls](/src/main/resources/schema.graphqls)
-into the test resource directory (src\test\resources\graphql) and run the generator.
+into the test resource directory `src\test\resources\graphql` and run the generator.
 
 ```shell script
 # Install

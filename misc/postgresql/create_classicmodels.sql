@@ -99,19 +99,19 @@ CREATE TABLE ProductLines(
 );
 
 
-COPY Customers FROM 'F:/mysqlsampledatabase/postgresql/datafiles/Customers.txt' (format csv, null "null", DELIMITER ',', HEADER);
+COPY Customers FROM 'F:/mysqlsampledatabase/postgresql/datafiles/Customers.txt' (format csv, null "null", DELIMITER ',');
 
-COPY Employees FROM 'F:/mysqlsampledatabase/postgresql/datafiles/Employees.txt' (format csv, null "null", DELIMITER ',', HEADER);
+COPY Employees FROM 'F:/mysqlsampledatabase/postgresql/datafiles/Employees.txt' (format csv, null "null", DELIMITER ',');
 
-COPY Offices FROM 'F:/mysqlsampledatabase/postgresql/datafiles/Offices.txt' (format csv, null "null", DELIMITER ',', HEADER);
+COPY Offices FROM 'F:/mysqlsampledatabase/postgresql/datafiles/Offices.txt' (format csv, null "null", DELIMITER ',');
 
-COPY OrderDetails FROM 'F:/mysqlsampledatabase/postgresql/datafiles/OrderDetails.txt' (format csv, null "null", DELIMITER ',', HEADER);
+COPY OrderDetails FROM 'F:/mysqlsampledatabase/postgresql/datafiles/OrderDetails.txt' (format csv, null "null", DELIMITER ',');
 
-COPY Orders FROM 'F:/mysqlsampledatabase/postgresql/datafiles/Orders.txt' (format csv, null "null", DELIMITER ',', HEADER);
+COPY Orders FROM 'F:/mysqlsampledatabase/postgresql/datafiles/Orders.txt' (format csv, null "null", DELIMITER ',');
 
-COPY Payments FROM 'F:/mysqlsampledatabase/postgresql/datafiles/Payments.txt' (format csv, null "null", DELIMITER ',', HEADER);
+COPY Payments FROM 'F:/mysqlsampledatabase/postgresql/datafiles/Payments.txt' (format csv, null "null", DELIMITER ',');
 
-COPY ProductLines FROM 'F:/mysqlsampledatabase/postgresql/datafiles/ProductLines.txt' (format csv, null "null", DELIMITER ',', HEADER);
+COPY ProductLines FROM 'F:/mysqlsampledatabase/postgresql/datafiles/ProductLines.txt' (format csv, null "null", DELIMITER ',');
 
-COPY Products FROM 'F:/mysqlsampledatabase/postgresql/datafiles/Products.txt' (format csv, null "null", DELIMITER ',', HEADER);
+COPY Products FROM 'F:/mysqlsampledatabase/postgresql/datafiles/Products.txt' (format csv, null "null", DELIMITER ',');
 
