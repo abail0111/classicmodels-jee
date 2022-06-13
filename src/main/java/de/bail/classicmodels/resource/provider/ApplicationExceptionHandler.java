@@ -1,4 +1,4 @@
-package de.bail.classicmodels.util;
+package de.bail.classicmodels.resource.provider;
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;

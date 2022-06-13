@@ -1,5 +1,9 @@
 package de.bail.classicmodels.resource.rest;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.fasterxml.jackson.datatype.jsr310.JSR310Module;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import de.bail.classicmodels.model.enities.GenericEntity;
 import de.bail.classicmodels.model.mapper.GenericMapper;
 import de.bail.classicmodels.service.CrudService;
@@ -45,6 +49,8 @@ public abstract class CrudResource<T extends GenericEntity, K, ID, S extends Cru
      */
     protected CrudResource(String location) {
         this.location = location;
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
     }
 
     /**

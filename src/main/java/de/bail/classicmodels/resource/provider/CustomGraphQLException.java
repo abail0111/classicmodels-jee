@@ -1,4 +1,4 @@
-package de.bail.classicmodels.util;
+package de.bail.classicmodels.resource.provider;
 
 import graphql.ErrorType;
 import graphql.GraphQLError;

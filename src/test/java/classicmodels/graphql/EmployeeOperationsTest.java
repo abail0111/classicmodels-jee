@@ -9,7 +9,7 @@ import de.bail.classicmodels.resource.graphql.GraphQLServlet;
 import de.bail.classicmodels.service.CustomerService;
 import de.bail.classicmodels.service.EmployeeService;
 
-import de.bail.classicmodels.util.CustomGraphQLException;
+import de.bail.classicmodels.resource.provider.CustomGraphQLException;
 import io.restassured.path.json.JsonPath;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

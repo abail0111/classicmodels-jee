@@ -1,7 +1,7 @@
 package de.bail.classicmodels.service;
 
 import de.bail.classicmodels.model.enities.GenericEntity;
-import de.bail.classicmodels.util.CustomGraphQLException;
+import de.bail.classicmodels.resource.provider.CustomGraphQLException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;

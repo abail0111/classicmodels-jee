@@ -5,7 +5,7 @@ import com.google.gson.JsonObject;
 import de.bail.classicmodels.model.enities.Payment;
 import de.bail.classicmodels.resource.graphql.GraphQLServlet;
 import de.bail.classicmodels.service.PaymentService;
-import de.bail.classicmodels.util.CustomGraphQLException;
+import de.bail.classicmodels.resource.provider.CustomGraphQLException;
 import io.restassured.path.json.JsonPath;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -20,7 +20,6 @@ import org.mockito.quality.Strictness;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
 import java.util.Collections;
 
 import static org.hamcrest.MatcherAssert.assertThat;
