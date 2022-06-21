@@ -19,7 +19,7 @@ import org.dataloader.DataLoaderRegistry;
 
 import javax.inject.Inject;
 import javax.servlet.annotation.WebServlet;
-import java.io.File;
+import java.io.InputStream;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
@@ -74,7 +74,7 @@ public class GraphQLServlet extends GraphQLHttpServlet {
     private GraphQLSchema createSchema() {
         SchemaParser schemaParser = new SchemaParser();
         SchemaGenerator schemaGenerator = new SchemaGenerator();
-        File schemaFile = new File(Objects.requireNonNull(GraphQLServlet.class.getClassLoader().getResource("schema.graphqls")).getFile());
+        InputStream schemaFile = GraphQLServlet.class.getClassLoader().getResourceAsStream("/schema.graphqls");
         TypeDefinitionRegistry typeRegistry = schemaParser.parse(schemaFile);
         RuntimeWiring wiring = buildRuntimeWiring();
         return schemaGenerator.makeExecutableSchema(typeRegistry, wiring);

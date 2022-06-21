@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSP - Hello World</title>
+    <title>Classic Models API (JEE)</title>
 </head>
 <body>
 <h1>Classic Models API (JEE)</h1>
