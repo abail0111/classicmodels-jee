@@ -164,7 +164,7 @@ public class GraphQLServlet extends GraphQLHttpServlet {
                             DataLoader<Integer, Object> dataLoader = dataFetchingEnvironment.getDataLoader("paymentDataLoader");
                             return dataLoader.load(customer.getId());
                         })
-                        .dataFetcher("order", dataFetchingEnvironment -> {
+                        .dataFetcher("orders", dataFetchingEnvironment -> {
                             Customer customer = dataFetchingEnvironment.getSource();
                             DataLoader<Integer, Object> dataLoader = dataFetchingEnvironment.getDataLoader("orderDataLoader");
                             return dataLoader.load(customer.getId());
