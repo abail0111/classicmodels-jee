@@ -4,6 +4,8 @@ import com.google.gson.JsonObject;
 import de.bail.classicmodels.resource.graphql.GraphQLServlet;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.junit.jupiter.MockitoSettings;
+import org.mockito.quality.Strictness;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
@@ -21,6 +23,7 @@ import static org.mockito.Mockito.*;
  * Return Rest Assured Response
  */
 @ExtendWith(MockitoExtension.class)
+@MockitoSettings(strictness = Strictness.LENIENT)
 public class StaticGraphQLTest {
 
     /**
@@ -98,4 +101,16 @@ public class StaticGraphQLTest {
         }
         return null;
     }
+
+    //        try {
+    //            ObjectMapper mapper = new ObjectMapper();
+    //            HashMap<String, Object> vars = mapper.readValue(variables.toString(), HashMap.class);
+    //            // create GraphQL request
+    //            GraphQLRequest request = new GraphQLRequest(loadDocument(directory, query), vars, new HashMap<>(), query);
+    //            // execute query
+    //            return graphQLServlet.executeQuery(request.getQuery());
+    //        } catch (JsonProcessingException e) {
+    //            e.printStackTrace();
+    //        }
+    //        return null;
 }
