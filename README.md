@@ -3,7 +3,7 @@
 The Classic Models API project is a Jakarta EE implementation of the
 [BIRT](https://eclipse.github.io/birt-website/docs/template-sample-database/) /
 [MySQL](https://www.mysqltutorial.org/mysql-sample-database.aspx)
-sample database as RESTful- and GraphQL web service.
+sample database as a RESTful- and GraphQL web service.
 
 
 ## Setup Database
